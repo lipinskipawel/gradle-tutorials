@@ -29,7 +29,7 @@ sourceSets {
     main {
         java {
             // override default src/main/java
-            setSrcDirs(listOf("src/java"))
+            setSrcDirs(listOf("source/java"))
             // add dir with src
             srcDirs("otherSrc/src/main/java")
         }
