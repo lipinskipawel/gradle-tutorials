@@ -12,6 +12,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+// configure task
+tasks.compileJava {
+    options.isFork = false
+}
+
+// configure all tasks with type
+tasks.withType<JavaCompile> {
+    options.isFork = false
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
