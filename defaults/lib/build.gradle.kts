@@ -4,12 +4,16 @@ plugins {
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs("libs")
+    }
 }
 
 dependencies {
     testImplementation(libs.junit.jupiter)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(":assertj-core-3.20.2")
 }
 
 // configure task

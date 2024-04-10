@@ -1,14 +1,14 @@
 package org.example;
 
+import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-class LibraryTest {
+class LibraryTest implements WithAssertions {
 
     @Test
     void someLibraryMethodReturnsTrue() {
         Library classUnderTest = new Library();
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
+
+        assertThat(classUnderTest.someLibraryMethod()).isTrue();
     }
 }
