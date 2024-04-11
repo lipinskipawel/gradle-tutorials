@@ -4,4 +4,4 @@ plugins {
 }
 
 rootProject.name = "defaults"
-include("lib")
+include("defaults-lib")

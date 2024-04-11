@@ -9,6 +9,9 @@ repositories {
     }
 }
 
+group = "org.example.defaults"
+version = "1.0"
+
 dependencies {
     testImplementation(libs.junit.jupiter)
 
