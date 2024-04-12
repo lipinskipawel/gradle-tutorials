@@ -33,10 +33,32 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+    // changing the junit XML file location
+    testResultsDir = layout.buildDirectory.dir("junit-custom") // instead default test-results
 }
 
+// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html
 tasks.named<Test>("test") {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines("junit-jupiter")
+    }
+
+    maxHeapSize = "1G"
+    ignoreFailures = true
+    failFast
+    testLogging {
+        events("failed", "skipped") // check TestLogEvent for options
+    }
+    maxParallelForks = 1
+    // ./gradlew test --tests "org.example.LibraryTest.should_skip" --continuous
+    // configures the junit xml
+    reports {
+        junitXml.apply {
+            isOutputPerTestCase = true
+            mergeReruns = true
+        }
+    }
+    isScanForTestClasses = false
 }
 
 // more about configuring source sets
