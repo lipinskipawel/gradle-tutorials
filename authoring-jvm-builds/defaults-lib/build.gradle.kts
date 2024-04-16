@@ -95,6 +95,7 @@ dependencies {
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(":assertj-core-3.20.2")
+    testImplementation(testFixtures(project(":base-lib")))
 
     testIntegrationImplementation(libs.junit.jupiter)
     testIntegrationRuntimeOnly("org.junit.platform:junit-platform-launcher")

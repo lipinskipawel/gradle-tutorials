@@ -5,3 +5,4 @@ plugins {
 
 rootProject.name = "authoring-jvm-builds"
 include("defaults-lib")
+include("base-lib")
