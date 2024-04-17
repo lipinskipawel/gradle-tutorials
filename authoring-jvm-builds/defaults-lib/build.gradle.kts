@@ -3,6 +3,7 @@ plugins {
     // the idea plugin is just from intellij to understand the testIntegration directory
     // gradle is working correctly without it
     idea
+    id("authoring.java21")
 }
 
 repositories {
@@ -14,14 +15,6 @@ repositories {
 
 group = "org.example.defaults"
 version = "1.0"
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-    // changing the junit XML file location
-    testResultsDir = layout.buildDirectory.dir("junit-custom") // instead default test-results
-}
 
 // more about configuring source sets
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
