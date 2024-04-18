@@ -11,4 +11,8 @@ public class Library {
     public int zeroOrOne() {
         return ThreadLocalRandom.current().nextInt(0, 2);
     }
+
+    public String format(String text) {
+        return STR."custom text: \{text}";
+    }
 }

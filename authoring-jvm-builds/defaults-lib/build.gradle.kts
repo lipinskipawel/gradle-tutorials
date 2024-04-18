@@ -100,9 +100,20 @@ tasks.compileJava {
     options.isFork = false
 }
 
-// configure all tasks with type
+// configure all tasks with type including compileTestJava
 tasks.withType<JavaCompile> {
     options.isFork = false
+    options.compilerArgs.add("--enable-preview")
+}
+
+// when running tests
+tasks.withType<Test> {
+    jvmArgs = listOf("--enable-preview")
+}
+
+// for the JVM that will run code
+tasks.withType<JavaExec> {
+    jvmArgs = listOf("--enable-preview")
 }
 
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html

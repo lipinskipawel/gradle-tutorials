@@ -33,4 +33,14 @@ class LibraryTest implements WithAssertions {
     void should_skip() {
         fail("This test should be skipped");
     }
+
+    @Test
+    void should_use_java21() {
+        final var text = "hello";
+        final var expected = STR."custom text: \{text}";
+
+        final var result = new Library().format(text);
+
+        assertThat(result).isEqualTo(expected);
+    }
 }
