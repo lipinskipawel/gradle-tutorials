@@ -84,8 +84,9 @@ val testIntegration = task<Test>("testIntegration") {
 tasks.check { dependsOn(testIntegration) }
 
 dependencies {
+    testImplementation(platform(project(":standard")))
     // https://docs.gradle.org/current/userguide/dependency_constraints.html#dependency-constraints
-    testImplementation(libs.junit.jupiter)
+    testImplementation("org.junit.jupiter:junit-jupiter:1.0.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(":assertj-core-3.20.2")
     testImplementation(testFixtures(project(":base-lib")))
