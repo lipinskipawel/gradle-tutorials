@@ -1,3 +1,5 @@
+import com.github.lipinskipawel.GreetingToFileTask
+
 plugins {
     `java-library`
     id("com.github.lipinskipawel.testing-plugin") version("0.1.0")
@@ -22,3 +24,23 @@ java {
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
+
+val greetingFile = objects.fileProperty()
+
+tasks.register<GreetingToFileTask>("greet") {
+    destination = greetingFile
+}
+
+tasks.register("sayGreeting") {
+    dependsOn("greet")
+    val greetingFile = greetingFile
+    doLast {
+        val file = greetingFile.get().asFile
+        println("${file.readText()} (file: ${file.name})")
+    }
+}
+
+// setting greetingFile after task configuration
+// This lazy evaluation is a key benefit of accepting any value when setting a file property and
+// then resolving that value when reading the property.
+greetingFile = layout.buildDirectory.file("hello.txt")
