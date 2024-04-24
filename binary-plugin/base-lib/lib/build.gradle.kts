@@ -1,3 +1,5 @@
+import com.github.lipinskipawel.GreetingFileExtension
+import com.github.lipinskipawel.GreetingPlugin
 import com.github.lipinskipawel.GreetingToFileTask
 
 plugins {
@@ -44,3 +46,10 @@ tasks.register("sayGreeting") {
 // This lazy evaluation is a key benefit of accepting any value when setting a file property and
 // then resolving that value when reading the property.
 greetingFile = layout.buildDirectory.file("hello.txt")
+
+// so one plugin can have many plugin classes
+apply<GreetingPlugin>()
+configure<GreetingFileExtension> {
+    message = "Hi"
+    greeter = "Gradle"
+}
