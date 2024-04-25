@@ -24,6 +24,10 @@ gradlePlugin {
             id = "com.github.lipinskipawel.testing-plugin"
             implementationClass = "com.github.lipinskipawel.TestingPlugin"
         }
+        create("serverEnv") {
+            id = "com.github.lipinskipawel.serverEnv"
+            implementationClass = "com.github.lipinskipawel.ServerEnvironmentPlugin"
+        }
     }
     version = "0.1.0"
     group = "com.github.lipinskipawel.testing-plugin"

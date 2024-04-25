@@ -4,7 +4,8 @@ import com.github.lipinskipawel.GreetingToFileTask
 
 plugins {
     `java-library`
-    id("com.github.lipinskipawel.testing-plugin") version("0.1.0")
+    id("com.github.lipinskipawel.testing-plugin") version ("0.1.0")
+    id("com.github.lipinskipawel.serverEnv") version ("0.1.0")
 }
 
 repositories {
@@ -47,9 +48,18 @@ tasks.register("sayGreeting") {
 // then resolving that value when reading the property.
 greetingFile = layout.buildDirectory.file("hello.txt")
 
-// so one plugin can have many plugin classes
+// so one plugin can have many plugin classes,
+// but it breaks quickly, better to create and import plugins explicit
 apply<GreetingPlugin>()
 configure<GreetingFileExtension> {
     message = "Hi"
     greeter = "Gradle"
+}
+
+// this is from directly imported plugin
+// id("com.github.lipinskipawel.serverEnv") version("0.1.0")
+environments {
+    create("dev") {
+        url = "https://it-works"
+    }
 }
