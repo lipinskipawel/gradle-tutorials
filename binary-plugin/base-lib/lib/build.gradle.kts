@@ -61,5 +61,9 @@ configure<GreetingFileExtension> {
 environments {
     create("dev") {
         url = "https://it-works"
+        customData {
+            websiteUrl = "https://other"
+            vcsUrl = "https://another"
+        }
     }
 }

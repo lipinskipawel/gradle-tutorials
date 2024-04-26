@@ -20,6 +20,7 @@ class ServerEnvironmentPlugin : Plugin<Project> {
             val taskName = "deployTo$capitalizedServerEnv"
             project.tasks.register(taskName, Deploy::class.java) { task ->
                 task.uri.set(serverEnvironment.url)
+                task.customData.set(serverEnvironment.customData)
             }
         }
     }
