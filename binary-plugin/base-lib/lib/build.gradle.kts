@@ -52,7 +52,6 @@ greetingFile = layout.buildDirectory.file("hello.txt")
 // but it breaks quickly, better to create and import plugins explicit
 apply<GreetingPlugin>()
 configure<GreetingFileExtension> {
-    message = "Hi"
     greeter = "Gradle"
 }
 
