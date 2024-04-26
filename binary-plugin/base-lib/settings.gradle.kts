@@ -1,6 +1,6 @@
 pluginManagement {
+    includeBuild("../testing-plugin")
     repositories {
-        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
     }
